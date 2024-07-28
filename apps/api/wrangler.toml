@@ -13,4 +13,4 @@ id = "533e14b65775464796b92daf7ebc65ac"
 
 [[services]]
 binding = "KIRIBI" # Be sure to set KIRIBI for the service binding
-service = "worker" # The name of the Kiribi worker
+service = "my-kiribi" # The name of the Kiribi my-kiribi

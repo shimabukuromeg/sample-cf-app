@@ -1,5 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "worker"
+name = "my-kiribi"
 main = "src/index.ts"
 compatibility_date = "2024-07-25"
 compatibility_flags = ["nodejs_compat"]
@@ -21,9 +21,9 @@ max_retries = 5
 
 [[services]]
 binding = "KIRIBI" # Be sure to set KIRIBI for the service binding
-service = "worker" # same as `name`
+service = "my-kiribi" # same as `name`
 
 [[services]]
 binding = "MY_JOB" # You can name the binding whatever you want
-service = "worker" # same as `name`
+service = "my-kiribi" # same as `name`
 entrypoint = "MyPerformer"

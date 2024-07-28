@@ -1,0 +1,29 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "worker"
+main = "src/index.ts"
+compatibility_date = "2024-07-25"
+compatibility_flags = ["nodejs_compat"]
+logpush = true
+
+[[d1_databases]]
+binding = "KIRIBI_DB" # Be sure to set KIRIBI_DB for the d1 database binding
+database_name = "kiribi-db" # The name of the d1 database you created
+database_id = "3c6d4f85-51a5-418d-b709-641a828e794a" # The database_id of the d1 database you created
+migrations_dir = './node_modules/kiribi/migrations'
+
+[[queues.producers]]
+binding = "KIRIBI_QUEUE" # Be sure to set KIRIBI_QUEUE for the queue binding
+queue = "kiribi-queue" # The name of the queue you created
+
+[[queues.consumers]]
+queue = "kiribi-queue" # The name of the queue you created
+max_retries = 5
+
+[[services]]
+binding = "KIRIBI" # Be sure to set KIRIBI for the service binding
+service = "worker" # same as `name`
+
+[[services]]
+binding = "MY_JOB" # You can name the binding whatever you want
+service = "worker" # same as `name`
+entrypoint = "MyPerformer"

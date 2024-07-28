@@ -2,12 +2,14 @@ import { Hono } from "hono";
 import { prettyJSON } from "hono/pretty-json";
 import { cors } from "hono/cors";
 import { etag } from "hono/etag";
+import { Kiribi } from "kiribi";
 
 // NOTE: 環境変数の紐付け
 type Bindings = {
   APP_NAME: string;
   article: KVNamespace;
   MAP_API_KEY: string; // NOTE: npx wrangler secret put MAP_API_KEY で環墧変数を設定済み
+  KIRIBI: Service<Kiribi>;
 };
 
 export type Article = {
@@ -125,6 +127,13 @@ app.get("/sample", (c) => {
 // NOTE: 役割一覧を返すエンドポイント
 app.get("/roles", (c) => {
   return c.json({ roles: ["admin", "user"] });
+});
+
+app.post("/webhook", async (c) => {
+  const payload = await c.req.json();
+  console.log("webhook payload: ", payload);
+  await c.env.KIRIBI.enqueue("MY_JOB", payload, { firstDelay: 60 });
+  return c.json({ message: "ok" });
 });
 
 export default app;

@@ -29,6 +29,12 @@ export type Param = {
   images?: string[];
 };
 
+export type SlackParam = {
+  text: string;
+  body: string;
+  firstDelay: number;
+};
+
 const app = new Hono<{ Bindings: Bindings }>();
 app.use("*", cors(), etag());
 app.use("*", prettyJSON());
@@ -133,6 +139,20 @@ app.post("/webhook", async (c) => {
   const payload = await c.req.json();
   console.log("webhook payload: ", payload);
   await c.env.KIRIBI.enqueue("MY_JOB", payload, { firstDelay: 60 });
+  return c.json({ message: "ok" });
+});
+
+app.post("/webhook-slack", async (c) => {
+  const payload = await c.req.json<SlackParam>();
+  console.log("webhook payload: ", payload);
+  await c.env.KIRIBI.enqueue(
+    "SlackSender",
+    {
+      text: payload.text,
+      body: payload.body,
+    },
+    { firstDelay: payload.firstDelay }
+  );
   return c.json({ message: "ok" });
 });
 

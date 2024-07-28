@@ -17,6 +17,7 @@
 		"wrangler": "^3.60.3"
 	},
 	"dependencies": {
-		"kiribi": "^0.0.16"
+		"kiribi": "^0.0.16",
+		"slack-cloudflare-workers": "^1.0.0"
 	}
 }

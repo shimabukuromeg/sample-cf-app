@@ -24,6 +24,31 @@ importers:
         specifier: ^3.57.2
         version: 3.67.1(@cloudflare/workers-types@4.20240725.0)
 
+  apps/my-kiribi:
+    dependencies:
+      kiribi:
+        specifier: ^0.0.16
+        version: 0.0.16(@cloudflare/workers-types@4.20240725.0)
+      slack-cloudflare-workers:
+        specifier: ^1.0.0
+        version: 1.0.0
+    devDependencies:
+      '@cloudflare/vitest-pool-workers':
+        specifier: ^0.4.5
+        version: 0.4.16(@cloudflare/workers-types@4.20240725.0)(@vitest/runner@1.5.3)(@vitest/snapshot@1.5.3)(vitest@1.5.0)
+      '@cloudflare/workers-types':
+        specifier: ^4.20240725.0
+        version: 4.20240725.0
+      typescript:
+        specifier: ^5.5.2
+        version: 5.5.4
+      vitest:
+        specifier: 1.5.0
+        version: 1.5.0
+      wrangler:
+        specifier: ^3.60.3
+        version: 3.67.1(@cloudflare/workers-types@4.20240725.0)
+
   apps/worker:
     dependencies:
       kiribi:
@@ -1606,6 +1631,23 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
     dev: true
+
+  /slack-cloudflare-workers@1.0.0:
+    resolution: {integrity: sha512-VM6jw6kV/IZtQ9aGK/8XIB6sf3zbp6lgtirCCCQ3qHIN4JaBBU47gPv1Fhzm/gd0lOm0GNHY84B/iYHR71umEQ==}
+    dependencies:
+      '@cloudflare/workers-types': 4.20240725.0
+      slack-edge: 1.0.0
+    dev: false
+
+  /slack-edge@1.0.0:
+    resolution: {integrity: sha512-R+RaOp/RX90bgzVF2J1xojLB46kBp1gBXglIAQFwJrSQ6uTNWbXp5gGGDZluaoLhPuNq9V8wxWeh2m6OPRHALg==}
+    dependencies:
+      slack-web-api-client: 1.0.0
+    dev: false
+
+  /slack-web-api-client@1.0.0:
+    resolution: {integrity: sha512-qIdEddzC2yyvDgUwJ5LSO4ZjHLnhfF8untU0FicLg+wiiPD1aiREeM80+AXJYHYaQJrtCB0Sm3NrYp0ntt0R/g==}
+    dev: false
 
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}

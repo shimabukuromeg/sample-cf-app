@@ -27,3 +27,6 @@ service = "my-kiribi" # same as `name`
 binding = "MY_JOB" # You can name the binding whatever you want
 service = "my-kiribi" # same as `name`
 entrypoint = "MyPerformer"
+
+[site]
+bucket = "./node_modules/kiribi/client"

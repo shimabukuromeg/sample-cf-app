@@ -1,4 +1,4 @@
-# sample-cf-app
+# sample-cf-api
 
 cloudflare stack 素振り
 
